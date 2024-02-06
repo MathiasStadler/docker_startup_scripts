@@ -1,0 +1,2 @@
++ echo 'COMMAND INSIDE SRIPT => 99_finish.sh'
++ set +x
