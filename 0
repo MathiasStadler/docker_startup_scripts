@@ -1,2 +1,1 @@
-+ echo 'COMMAND INSIDE SRIPT => 99_finish.sh'
-+ set +x
+./call_multi_scripts.sh: Zeile 6: ./scripts/50_error.sh: Keine Berechtigung
