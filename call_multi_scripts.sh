@@ -1,15 +1,13 @@
 #!/bin/bash
 set +x
-SCRIPT_FOLDER="./scripts";
-for SCRIPT in $(ls "$SCRIPT_FOLDER" | sort -g) 
-do 
-    echo "$SCRIPT_FOLDER/$SCRIPT"
-    # bash "$SCRIPT_FOLDER/$SCRIPT" &
-    out=$(./$SCRIPT_FOLDER/$SCRIPT 2>&1); rc=$?;
-    if [[ $rc != 0 ]]; then
-            # write error msg to stderr, then exit
-            echo "error $rc in script $scr: $out" >&2
-            exit $rc
-    echo $out
+SCRIPT_FOLDER="./scripts"
+for SCRIPT in $(ls "$SCRIPT_FOLDER" | sort -g)
+do
+out=$($SCRIPT_FOLDER/$SCRIPT 2>$?); rc=$?;
+echo "RUN SCRIPT $SCRIPT WITH EXIT CODE $rc"
+if  [ "$rc" -ne "0" ]; then
+    echo "error $rc in script $SCRIPT: $out" >&2
+    exit $rc
+fi
 done
 wait
